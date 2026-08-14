@@ -7,8 +7,7 @@ type: "Annual report"
 coverage: "DFW"
 copyright: "PD"
 updated: "2025"
-url: "https://www.nctcog.org/trans/quality/safety/regional-crash-data"
-notes: "Verify URL before publish."
+url: "https://www.nctcog.org/trans/quality/safety/transportation-safety/regional-crash-data"
 published: true
 ---
 

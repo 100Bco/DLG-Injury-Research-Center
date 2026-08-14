@@ -31,16 +31,18 @@ export function SearchBox({ index }: { index: SearchDoc[] }) {
       <label htmlFor="site-search" className="meta" style={{ display: 'block', marginBottom: 6 }}>
         Search all {index.length} sources
       </label>
-      <input
-        id="site-search"
-        className="search__input"
-        type="search"
-        placeholder="Search by name, agency, or keyword — e.g. fatalities, trucks, Austin"
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        autoComplete="off"
-        aria-describedby="search-hint"
-      />
+      <div className="search__field">
+        <input
+          id="site-search"
+          className="search__input"
+          type="search"
+          placeholder="Search by name, agency, or keyword — e.g. fatalities, trucks, Austin"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          autoComplete="off"
+          aria-describedby="search-hint"
+        />
+      </div>
       <div id="search-hint" className="search__hint">
         Searches source names, agencies, and annotations.
       </div>
@@ -68,14 +70,8 @@ export function SearchBox({ index }: { index: SearchDoc[] }) {
                   </div>
                   <div className="source-row__badges">
                     <div className="badges">
-                      <span className="badge">
-                        <span className="badge__label">Type</span>
-                        {doc.type}
-                      </span>
-                      <span className="badge">
-                        <span className="badge__label">Coverage</span>
-                        {doc.coverage}
-                      </span>
+                      <span className="badge badge--type">{doc.type}</span>
+                      <span className="badge badge--coverage">{doc.coverage}</span>
                     </div>
                   </div>
                 </Link>

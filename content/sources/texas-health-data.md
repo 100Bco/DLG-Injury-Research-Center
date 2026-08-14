@@ -7,8 +7,7 @@ type: "Query tool"
 coverage: "Statewide"
 copyright: "PD"
 updated: "2024"
-url: "https://healthdata.dshs.texas.gov/"
-notes: "Verify URL before publish."
+url: "https://www.dshs.texas.gov/center-health-statistics/texas-health-data"
 published: true
 ---
 

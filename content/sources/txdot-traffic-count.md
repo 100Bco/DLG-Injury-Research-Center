@@ -8,7 +8,6 @@ coverage: "Statewide"
 copyright: "PD"
 updated: "2026"
 url: "https://www.txdot.gov/data-maps/traffic-count-maps.html"
-notes: "Verify URL before publish."
 published: true
 ---
 

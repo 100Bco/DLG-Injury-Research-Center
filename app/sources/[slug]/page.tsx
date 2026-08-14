@@ -109,7 +109,7 @@ export default async function SourcePage({
           />
         </article>
 
-        <aside aria-label="Source details">
+        <aside aria-label="Source details" className="sidebar">
           <div className="sidebar-block">
             <h2>Details</h2>
             <dl className="meta-table">
@@ -135,7 +135,7 @@ export default async function SourcePage({
           </div>
 
           {source.key_stats ? (
-            <div className="sidebar-block">
+            <div className="sidebar-block key-stats-block">
               <h2>Key stats</h2>
               <p>{source.key_stats}</p>
             </div>

@@ -1,14 +1,10 @@
 import type { Source } from '@/lib/content';
 
-function copyrightLabel(copyright: string): string {
-  if (copyright === 'PD') return 'Public domain';
-  if (copyright === 'LINK-OUT') return 'Link out';
-  return copyright;
-}
-
 /**
- * The metadata badge row — the primary visual element of the directory.
- * Renders type, coverage, copyright, and updated year as monospace chips.
+ * The metadata badge row. Type is the emphasized (filled) chip; coverage is an
+ * outline chip; copyright is color-coded (green = public domain, amber = link
+ * out); updated year is a muted chip. Labels are omitted for a cleaner read —
+ * the source detail page carries a fully labelled Details table.
  */
 export function Badges({
   source,
@@ -17,24 +13,16 @@ export function Badges({
   source: Pick<Source, 'type' | 'coverage' | 'copyright' | 'updated'>;
   showUpdated?: boolean;
 }) {
+  const isPd = source.copyright === 'PD';
   return (
     <div className="badges">
-      <span className="badge">
-        <span className="badge__label">Type</span>
-        {source.type}
-      </span>
-      <span className="badge">
-        <span className="badge__label">Coverage</span>
-        {source.coverage}
-      </span>
-      <span className={`badge${source.copyright === 'PD' ? ' badge--pd' : ''}`}>
-        {copyrightLabel(source.copyright)}
+      <span className="badge badge--type">{source.type}</span>
+      <span className="badge badge--coverage">{source.coverage}</span>
+      <span className={`badge ${isPd ? 'badge--pd' : 'badge--linkout'}`}>
+        {isPd ? 'Public domain' : 'Link out'}
       </span>
       {showUpdated && source.updated ? (
-        <span className="badge">
-          <span className="badge__label">Updated</span>
-          {source.updated}
-        </span>
+        <span className="badge badge--muted">Updated {source.updated}</span>
       ) : null}
     </div>
   );

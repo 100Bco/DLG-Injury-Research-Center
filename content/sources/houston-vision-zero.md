@@ -7,8 +7,8 @@ type: "Dashboard"
 coverage: "Houston"
 copyright: "PD"
 updated: "2025"
-url: "https://www.houstontx.gov/visionzero/"
-notes: "Verify URL before publish."
+url: "https://www.arcgis.com/home/item.html?id=34fde34b703b41a0ae578f5368f520af#overview"
+secondary_url: "https://www.houstontx.gov/visionzero/"
 published: true
 ---
 

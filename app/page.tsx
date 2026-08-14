@@ -14,14 +14,15 @@ export default async function HomePage() {
   return (
     <div className="container">
       <div className="home-intro">
-        <h1>{site.name}</h1>
+        <p className="home-eyebrow">Texas Injury &amp; Crash Data</p>
+        <h1>The authoritative sources, in one place.</h1>
         <p className="lede">{site.tagline}</p>
         <SearchBox index={index} />
       </div>
 
       <nav aria-label="Categories">
         <p className="section-label">
-          {categories.length} categories · {total} sources
+          Browse {total} sources across {categories.length} categories
         </p>
         <div className="category-grid">
           {categories.map((cat) => (
@@ -37,6 +38,10 @@ export default async function HomePage() {
                 </span>
               </div>
               <span className="category-card__desc">{cat.description}</span>
+              <span className="category-card__go">
+                View sources
+                <span aria-hidden="true">→</span>
+              </span>
             </Link>
           ))}
         </div>
