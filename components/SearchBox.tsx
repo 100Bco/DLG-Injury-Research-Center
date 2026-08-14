@@ -8,7 +8,13 @@ import type { SearchDoc } from '@/lib/content';
  * Client-side search across name, agency, and annotation body. The full index
  * (27 small docs) is inlined at build time, so search is instant and offline.
  */
-export function SearchBox({ index }: { index: SearchDoc[] }) {
+export function SearchBox({
+  index,
+  centered = false,
+}: {
+  index: SearchDoc[];
+  centered?: boolean;
+}) {
   const [q, setQ] = useState('');
 
   const results = useMemo(() => {
@@ -27,7 +33,7 @@ export function SearchBox({ index }: { index: SearchDoc[] }) {
   const query = q.trim();
 
   return (
-    <div className="search">
+    <div className={`search${centered ? ' search--center' : ''}`}>
       <label htmlFor="site-search" className="meta" style={{ display: 'block', marginBottom: 6 }}>
         Search all {index.length} sources
       </label>
