@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import { site } from '@/lib/site';
 import { ThemeToggle } from './ThemeToggle';
+import { LogoMark } from './Logo';
 
 export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="container site-header__inner">
-        <Link href="/" className="site-header__brand">
-          {site.name}
+        <Link href="/" className="site-header__brand" aria-label={`${site.name} — home`}>
+          <LogoMark size={28} />
+          <span>{site.name}</span>
         </Link>
         <nav className="site-header__nav" aria-label="Primary">
           <Link href="/">Categories</Link>
