@@ -269,6 +269,50 @@ a:hover {
     ),
     linear-gradient(180deg, var(--bg-brand-soft) 0%, var(--bg) 64%);
 }
+/* Faint dot grid — texture that fills the banner without competing with the
+   text. Masked to fade out behind the centered content. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--brand) 16%, transparent) 1px,
+    transparent 1.5px
+  );
+  background-size: 22px 22px;
+  -webkit-mask: radial-gradient(
+    68% 62% at 50% 46%,
+    transparent 0%,
+    transparent 42%,
+    #000 92%
+  );
+  mask: radial-gradient(
+    68% 62% at 50% 46%,
+    transparent 0%,
+    transparent 42%,
+    #000 92%
+  );
+}
+/* Two soft brand glows on the flanks to warm up the empty margins. */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+      26% 60% at 8% 42%,
+      color-mix(in srgb, var(--brand) 12%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      26% 60% at 92% 42%,
+      color-mix(in srgb, var(--accent) 9%, transparent),
+      transparent 70%
+    );
+}
 .hero__inner {
   position: relative;
   z-index: 1;
@@ -294,7 +338,8 @@ a:hover {
   font-size: 1.12rem;
   line-height: 1.55;
 }
-.search--center {
+/* Higher specificity so it wins over the base `.search` margin shorthand. */
+.search.search--center {
   margin-left: auto;
   margin-right: auto;
 }
