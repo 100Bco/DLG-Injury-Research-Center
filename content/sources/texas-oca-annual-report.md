@@ -8,8 +8,8 @@ coverage: "Statewide"
 copyright: "PD"
 updated: "2025"
 priority: true
-url: "https://www.txcourts.gov/statistics/annual-statistical-reports/"
-secondary_url: "https://www.txcourts.gov/statistics/"
+url: "https://www.txcourts.gov/judicial-data/annual-statistical-reports/"
+secondary_url: "https://www.txcourts.gov/judicial-data/"
 key_stats: "OCA reported injury or damage cases involving a motor vehicle rose 15% in 2021. Reports run by state fiscal year, current through FY 2025."
 published: true
 ---
