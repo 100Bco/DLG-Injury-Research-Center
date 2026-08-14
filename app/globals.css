@@ -12,8 +12,10 @@
 :root {
   --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', Menlo,
     Consolas, monospace;
-  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
+  /* Inter is loaded via next/font and exposed as --font-inter; fall back to a
+     system sans if it hasn't painted yet. */
+  --font-sans: var(--font-inter), system-ui, -apple-system, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
 
   /* ---- Light theme ---- */
   --bg: #f4f6fb;
@@ -65,47 +67,8 @@
   --maxw: 1140px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --bg: #080d1a;
-    --bg-elevated: #101728;
-    --bg-sunken: #0b1120;
-    --bg-brand-soft: #131f3c;
-
-    --text: #e8ecf6;
-    --text-muted: #9aa6c0;
-    --text-faint: #6a7690;
-
-    --border: #1d2740;
-    --border-strong: #2a3855;
-
-    --brand: #9fb8ff;
-    --brand-ink: #b7c9ff;
-    --link: #7ea2ff;
-    --link-hover: #a6c0ff;
-    --brand-ring: rgba(126, 162, 255, 0.35);
-
-    --accent: #ff5d75;
-    --accent-soft: #2a1420;
-
-    --chip-bg: #16203a;
-    --chip-border: #26324e;
-    --chip-type-bg: #17223f;
-    --chip-type-border: #2b3c66;
-    --chip-type-text: #a9c0ff;
-    --pd-bg: #13291d;
-    --pd-border: #274b33;
-    --pd-text: #86c79b;
-    --linkout-bg: #2a2113;
-    --linkout-border: #4a3a1c;
-    --linkout-text: #d9b877;
-
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.45);
-    --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.55);
-  }
-}
-
+/* Light is the default in all cases. Dark applies only when the visitor
+   explicitly opts in (data-theme="dark"), regardless of OS preference. */
 :root[data-theme='dark'] {
   --bg: #080d1a;
   --bg-elevated: #101728;
@@ -231,13 +194,10 @@ a:hover {
   text-decoration: none;
   color: var(--text);
 }
-.site-header__brand::before {
-  content: '';
-  width: 12px;
-  height: 12px;
-  border-radius: 4px;
-  background: linear-gradient(135deg, var(--brand) 40%, var(--accent));
-  box-shadow: 0 0 0 3px var(--bg-brand-soft);
+.site-header__brand svg {
+  display: block;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
 }
 .site-header__nav {
   display: flex;

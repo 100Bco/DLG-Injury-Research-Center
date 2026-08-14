@@ -1,7 +1,16 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { site } from '@/lib/site';
 import { SiteHeader, SiteFooter } from '@/components/SiteChrome';
+
+// Inter — highly readable, neutral, and widely trusted for data/reference UIs.
+// Self-hosted at build time by next/font (no runtime request).
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -41,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

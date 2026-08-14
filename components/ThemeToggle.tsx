@@ -2,49 +2,49 @@
 
 import { useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark' | 'system';
+type Theme = 'light' | 'dark';
 
 /**
- * Cycles light → dark → system. The initial paint is handled by an inline
- * script in the layout (no flash); this only reflects and updates state.
+ * Light/dark toggle. Light is the default; dark is opt-in and persisted.
+ * The initial paint is handled by an inline script in the layout (no flash);
+ * this reflects and updates the stored choice.
  */
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>('system');
+  const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const stored = (localStorage.getItem('theme') as Theme) || 'system';
-    setTheme(stored);
+    const stored = localStorage.getItem('theme');
+    setTheme(stored === 'dark' ? 'dark' : 'light');
   }, []);
 
-  function apply(next: Theme) {
+  function toggle() {
+    const next: Theme = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
     const root = document.documentElement;
-    if (next === 'system') {
-      localStorage.removeItem('theme');
-      root.removeAttribute('data-theme');
+    if (next === 'dark') {
+      localStorage.setItem('theme', 'dark');
+      root.setAttribute('data-theme', 'dark');
     } else {
-      localStorage.setItem('theme', next);
-      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', 'light');
+      root.setAttribute('data-theme', 'light');
     }
   }
 
-  function cycle() {
-    apply(theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light');
-  }
-
-  const label = theme === 'system' ? 'Auto' : theme === 'dark' ? 'Dark' : 'Light';
+  const isDark = theme === 'dark';
 
   return (
     <button
       type="button"
       className="theme-toggle"
-      onClick={cycle}
-      aria-label={`Theme: ${label}. Click to change.`}
+      onClick={toggle}
+      aria-pressed={isDark}
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       suppressHydrationWarning
     >
-      {mounted ? label : 'Theme'}
+      {mounted ? (isDark ? 'Dark' : 'Light') : 'Theme'}
     </button>
   );
 }
