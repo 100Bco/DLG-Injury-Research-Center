@@ -10,8 +10,9 @@ export const site = {
     'A curated reference to authoritative Texas personal-injury and crash data sources — for journalists, researchers, students, and policy writers.',
   description:
     'A curated, neutral directory of authoritative Texas personal-injury, crash, fatality, and injury-health data sources. Find the right primary source fast: agencies, datasets, query tools, dashboards, and annual reports.',
-  // Update to the production domain before removing noindex.
+  // TODO: set the real production domain — used for canonical URLs, sitemap,
+  // and Open Graph. Until this is correct, indexed canonicals will be wrong.
   url: 'https://texas-injury-data.example.com',
-  // Launch requirement: keep the whole site noindex until content + URLs are reviewed.
-  noindex: true,
+  // URLs verified and content reviewed — the directory is open to search engines.
+  noindex: false,
 };

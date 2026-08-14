@@ -148,24 +148,17 @@ export function CategoryFilters({ sources }: { sources: RowSource[] }) {
               {s.excerpt ? <p className="source-row__excerpt">{s.excerpt}</p> : null}
               <div className="source-row__badges">
                 <div className="badges">
-                  <span className="badge">
-                    <span className="badge__label">Type</span>
-                    {s.type}
-                  </span>
-                  <span className="badge">
-                    <span className="badge__label">Coverage</span>
-                    {s.coverage}
-                  </span>
+                  <span className="badge badge--type">{s.type}</span>
+                  <span className="badge badge--coverage">{s.coverage}</span>
                   <span
-                    className={`badge${s.copyright === 'PD' ? ' badge--pd' : ''}`}
+                    className={`badge ${
+                      s.copyright === 'PD' ? 'badge--pd' : 'badge--linkout'
+                    }`}
                   >
                     {copyrightLabel(s.copyright)}
                   </span>
                   {s.updated ? (
-                    <span className="badge">
-                      <span className="badge__label">Updated</span>
-                      {s.updated}
-                    </span>
+                    <span className="badge badge--muted">Updated {s.updated}</span>
                   ) : null}
                 </div>
               </div>
