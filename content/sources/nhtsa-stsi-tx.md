@@ -7,8 +7,7 @@ type: "Dashboard"
 coverage: "Federal-TX"
 copyright: "PD"
 updated: "2024"
-url: "https://cdan.dot.gov/stsi.htm"
-notes: "Verify URL before publish."
+url: "https://cdan.dot.gov/stsi/stsi.htm"
 published: true
 ---
 

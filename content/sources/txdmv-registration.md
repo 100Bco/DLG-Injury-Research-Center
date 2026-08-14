@@ -8,7 +8,6 @@ coverage: "Statewide"
 copyright: "PD"
 updated: "2025"
 url: "https://www.txdmv.gov/reports-and-data"
-notes: "Verify URL before publish."
 published: true
 ---
 

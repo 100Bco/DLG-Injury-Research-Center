@@ -100,15 +100,11 @@ which emits `noindex, nofollow` on every page and a `Disallow: /` robots.txt.
 Before removing noindex:
 
 1. Set the production domain in `lib/site.ts` (`site.url`).
-2. Verify the 6 sources whose `notes` say **"Verify URL before publish"**
-   resolve:
-   - `houston-vision-zero`
-   - `nctcog-regional-crash`
-   - `nhtsa-stsi-tx`
-   - `texas-health-data`
-   - `txdmv-registration`
-   - `txdot-traffic-count`
-3. Set `site.noindex = false` and redeploy.
+2. ~~Verify the 6 flagged source URLs.~~ **Done** — all six were confirmed
+   (and four corrected) on 2026-08-14: `houston-vision-zero`,
+   `nctcog-regional-crash`, `nhtsa-stsi-tx`, `texas-health-data`,
+   `txdmv-registration`, `txdot-traffic-count`.
+3. Complete the content review, then set `site.noindex = false` and redeploy.
 
 ## Content rules
 
