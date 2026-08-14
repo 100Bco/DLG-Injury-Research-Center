@@ -15,35 +15,35 @@ export default async function HomePage() {
   const featured = allSources.filter((s) => s.priority);
   const pdCount = allSources.filter((s) => s.copyright === 'PD').length;
 
+  const stats = [
+    { num: total, label: 'Curated sources' },
+    { num: categories.length, label: 'Categories' },
+    { num: featured.length, label: 'Featured picks' },
+    { num: pdCount, label: 'Public-domain' },
+  ];
+
   return (
-    <div className="container">
-      <section className="home-intro">
-        <p className="home-eyebrow">Texas Injury &amp; Crash Data</p>
-        <h1>The authoritative sources, in one place.</h1>
-        <p className="lede">{site.tagline}</p>
-        <SearchBox index={index} />
+    <>
+      <section className="hero">
+        <div className="hero__inner">
+          <p className="home-eyebrow">Texas Injury &amp; Crash Data</p>
+          <h1>The authoritative sources, in one place.</h1>
+          <p className="lede">{site.tagline}</p>
+          <SearchBox index={index} centered />
+
+          <div className="hero-stats" aria-label="At a glance">
+            {stats.map((s) => (
+              <div className="hero-stat" key={s.label}>
+                <span className="hero-stat__num">{s.num}</span>
+                <span className="hero-stat__label">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <div className="stats" aria-label="At a glance">
-        <div className="stat">
-          <div className="stat__num">{total}</div>
-          <div className="stat__label">Curated sources</div>
-        </div>
-        <div className="stat">
-          <div className="stat__num">{categories.length}</div>
-          <div className="stat__label">Categories</div>
-        </div>
-        <div className="stat">
-          <div className="stat__num">{featured.length}</div>
-          <div className="stat__label">Featured picks</div>
-        </div>
-        <div className="stat">
-          <div className="stat__num">{pdCount}</div>
-          <div className="stat__label">Public-domain</div>
-        </div>
-      </div>
-
-      {featured.length > 0 ? (
+      <div className="container">
+        {featured.length > 0 ? (
         <section aria-labelledby="featured-heading" className="home-section">
           <div className="home-section__head">
             <h2 id="featured-heading" className="home-section__title">
@@ -117,6 +117,7 @@ export default async function HomePage() {
           ))}
         </nav>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
